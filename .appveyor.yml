@@ -1,0 +1,13 @@
+# version format
+version: 1.0.{build}
+
+# to run your custom scripts instead of automatic MSBuild
+build_script:
+- cmd: echo "Init"
+test: off
+
+skip_commits:
+  message: /\(doc\).*/      # Regex for matching commit message
+
+on_finish:
+  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
