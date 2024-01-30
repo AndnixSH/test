@@ -60,13 +60,13 @@ if(-not $env:appveyor_rdp_password) {
 }
 
 if($blockRdp) {
-    $path = "$($env:USERPROFILE)\Desktop\Delete me to continue build.txt"
+    #$path = "$($env:USERPROFILE)\Desktop\Delete me to continue build.txt"
     # create "lock" file.
-    Set-Content -Path $path -Value ''    
-    Write-Warning "Build paused. To resume it, open a RDP session to delete 'Delete me to continue build.txt' file on Desktop."
+    #Set-Content -Path $path -Value ''    
+    Write-Warning "Build paused"
     # wait until "lock" file is deleted by user.
     while($true) {
       Start-Sleep -Seconds 1
     }
-    Write-Host "Build lock file has been deleted. Resuming build."
+    #Write-Host "Build lock file has been deleted. Resuming build."
 }
